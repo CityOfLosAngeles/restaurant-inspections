@@ -1,7 +1,8 @@
 # restaurant-inspections.R
 # download county inspection data, filter to city level, post to the portal
 
-# Adam Scherling, March 21 2018
+# Adam Scherling
+# Last edited April 9, 2018
 
 # change this to use pacman...
 library(RSocrata)
