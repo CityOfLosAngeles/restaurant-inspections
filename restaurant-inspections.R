@@ -35,11 +35,8 @@ city_inspections <- read.socrata("https://data.lacity.org/resource/ydjb-vh9c.jso
 # If there are no changes, don't upsert
 # I assume that the violation data will only change if the inspection data changes
 upsert <- FALSE
-if (nrow(inspections)!=nrow(city_inspections)) {
-	# if the data have different number of rows, upsert
-	upsert <- TRUE
-} else if (!all.equal(sort(inspections$serial_number), sort(city_inspections$serial_number))) {
-	# if there are any different serial numbers, upsert
+if (max(inspections$activity_date) > max(city_inspections$activity_date)) {
+	# if the county data have more recent inspections, upsert
 	upsert <- TRUE
 }
 
