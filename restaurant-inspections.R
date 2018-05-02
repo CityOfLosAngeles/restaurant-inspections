@@ -45,7 +45,6 @@ if (nrow(inspections)!=nrow(city_inspections)) {
 
 if (upsert) {
 	# read the password
-	setwd('~/github/restaurant-inspections')
 	user_password <- readLines("password.txt")
 
 	# Upload inspections to Socrata
@@ -55,7 +54,7 @@ if (upsert) {
 	              email = "adam.scherling@lacity.org",
 	              password = user_password)
 
-	Upload violations to Socrata
+	# Upload violations to Socrata
 	write.socrata(dataframe = violations,
 	              dataset_json_endpoint = "https://data.lacity.org/resource/h7ac-gbs7.json",
 	              update_mode = "UPSERT",
